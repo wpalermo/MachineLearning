@@ -2,7 +2,6 @@
 
 # Começando com os imports
 import csv
-import gender_utils
 import statistics
 import matplotlib.pyplot as plt
 
@@ -49,8 +48,10 @@ input("Aperte Enter para continuar...")
 # TAREFA 2
 # TODO: Imprima o `gênero` das primeiras 20 linhas
 print("\nTAREFA 2: Imprimindo o gênero das primeiras 20 amostras")
-for gender in gender_utils.gender_list(data_list[:20]):
-    print(gender)
+
+#Ternary Operator no python
+for gender in data_list[:20]:
+    print(gender[-2] if gender[-2] != "" else "undefined")
 
 # Ótimo! Nós podemos pegar as linhas(samples) iterando com um for, e as colunas(features) por índices.
 # Mas ainda é difícil pegar uma coluna em uma lista. Exemplo: Lista com todos os gêneros
@@ -62,8 +63,17 @@ input("Aperte Enter para continuar...")
 # TAREFA 3
 # TODO: Crie uma função para adicionar as colunas(features) de uma lista em outra lista, na mesma ordem
 def column_to_list(data, index):
+    """ Recebe uma lista de listas, no caso CSV e retorna apenas uma coluna dessa lista,
+    na mesma ordem da lista de entrada
+    INPUT:
+        data: list. lista completa com todas as linhas e colunas
+        index: int. indice da coluna que sera retornada
+    OUTPUT:
+        column_list: list. lista com a coluna relativa ao indice passado na entrada
+    """
+
     column_list = []
-        # Dica: Você pode usar um for para iterar sobre as amostras, pegar a feature pelo seu índice, e dar append para uma lista
+    # Dica: Você pode usar um for para iterar sobre as amostras, pegar a feature pelo seu índice, e dar append para uma lista
     for line in data:
         column_list.append(line[index])
 
@@ -86,10 +96,15 @@ input("Aperte Enter para continuar...")
 
 # TAREFA 4
 # TODO: Conte cada gênero. Você não deveria usar uma função parTODO isso.
-gender_count = gender_utils.gender_count(data_list)
-male = gender_count[0]
-female = gender_count[1]
 
+male = 0
+female = 0
+
+for line in data_list:
+    if line[-2] == "Male":
+        male += 1
+    elif line[-2] == "Female":
+        female += 1
 
 # Verificando o resultado
 print("\nTAREFA 4: Imprimindo quantos masculinos e femininos nós encontramos")
@@ -105,13 +120,23 @@ input("Aperte Enter para continuar...")
 # TODO: Crie uma função para contar os gêneros. Retorne uma lista.
 # Isso deveria retornar uma lista com [count_male, count_female] (exemplo: [10, 15] significa 10 Masculinos, 15 Femininos)
 def count_gender(data_list):
+    """ Recebe uma lista de genereos e retorna a quantidade de cada um.
+
+    INPUT:
+        data_list: list. lista de generos
+
+    OUTPUT:
+        return: list. lista com 2 valores o primeiro de numero de generos Masculinos
+        e o segundo com numero de generos femininos
+    """
+
     male = 0
     female = 0
 
     for line in data_list:
         if line[-2] == "Male":
             male += 1
-        elif line[-2]  == "Female":
+        elif line[-2] == "Female":
             female += 1
 
     return [male, female]
@@ -132,12 +157,21 @@ input("Aperte Enter para continuar...")
 # TODO: Crie uma função que pegue o gênero mais popular, e retorne este gênero como uma string.
 # Esperamos ver "Masculino", "Feminino", ou "Igual" como resposta.
 def most_popular_gender(data_list):
+    """ Recebe uma lista de generos e retorna a qual é mais popular (qual tem mais).
+
+    INPUT:
+        data_list: list. lista de generos
+
+    OUTPUT:
+        answer: string. Retorna o genero mais popular, caso sejam iguais retorna IGUAL
+    """
+
     answer = ""
     genders = count_gender(data_list)
 
-    if genders[0] > genders[1] :
+    if genders[0] > genders[1]:
         answer = "Masculino"
-    elif genders[1] > genders[0] :
+    elif genders[1] > genders[0]:
         answer = "Feminino"
     else:
         answer = "Igual"
@@ -175,6 +209,14 @@ input("Aperte Enter para continuar...")
 print("\nTAREFA 7: Verifique o gráfico!")
 
 def count_type(data_list):
+    """ Recebe uma lista de tipos e retorna a quantidade de cada um.
+
+    INPUT:
+        data_list: list. lista de tipos
+
+    OUTPUT:
+        return: list. lista com 2 valores o primeiro de numero de generos Masculinos
+    """
     cost = 0
     sub = 0
     for line in data_list:
@@ -283,6 +325,16 @@ print("Você vai encarar o desafio? (yes ou no)")
 answer = "yes"
 
 def count_items(column_list):
+    """ Recebe uma lista de qualquer e retorna a quantidade de tipos e a Quantidade
+    de cada um dos tipos.
+
+    INPUT:
+        data_list: list. lista generica
+
+    OUTPUT:
+        item_types: list. lista com os tipos encontrados na colunas
+        count_items: list. lista com a contagem de itens relativas ao seu tipo
+    """
     #print("\n\n Count ITEMS")
     #print(column_list)
 
