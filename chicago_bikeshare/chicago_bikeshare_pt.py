@@ -49,7 +49,8 @@ input("Aperte Enter para continuar...")
 # TODO: Imprima o `gênero` das primeiras 20 linhas
 print("\nTAREFA 2: Imprimindo o gênero das primeiras 20 amostras")
 
-#Ternary Operator no python
+#Ternary Operator no python, pesquisado na internet no site abaixo.
+#http://book.pythontips.com/en/latest/ternary_operators.html
 for gender in data_list[:20]:
     print(gender[-2] if gender[-2] != "" else "undefined")
 
@@ -269,7 +270,8 @@ input("Aperte Enter para continuar...")
 # Você não deve usar funções prontas parTODO isso, como max() e min().
 trip_duration_list = column_to_list(data_list, 2)
 
-
+#funcao MAP pesquisada na internet
+#https://stackoverflow.com/questions/3371269/call-int-function-on-every-list-element
 min_trip = min(map(int, trip_duration_list))
 max_trip = max(map(int, trip_duration_list))
 mean_trip = statistics.mean(map(int, trip_duration_list))
@@ -341,7 +343,8 @@ def count_items(column_list):
     item_types = list(set(column_list))
     #print(item_types)
 
-
+    #Inicializacao encontrada na em pesquisa na internet
+    #stackoverflow
     count_items = [0]*len(item_types)
     #print(count_items)
 
