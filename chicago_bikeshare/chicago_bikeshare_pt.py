@@ -220,6 +220,8 @@ def count_type(data_list):
     """
     cost = 0
     sub = 0
+
+    print(set(data_list))
     for line in data_list:
         if line[-3] == "Customer":
             cost += 1
