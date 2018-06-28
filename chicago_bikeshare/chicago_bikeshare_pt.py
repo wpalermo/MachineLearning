@@ -209,33 +209,40 @@ input("Aperte Enter para continuar...")
 # TODO: Crie um gráfico similar para user_types. Tenha certeza que a legenda está correta.
 print("\nTAREFA 7: Verifique o gráfico!")
 
-def count_type(data_list):
+def count_type(type_list):
     """ Recebe uma lista de tipos e retorna a quantidade de cada um.
 
     INPUT:
         data_list: list. lista de tipos
 
     OUTPUT:
-        return: list. lista com 2 valores o primeiro de numero de generos Masculinos
+        list. lista com a quantidade de cada um dos tipos da lista. No caso
+              Costumer, Subscriber ou Dependent
     """
     cost = 0
     sub = 0
+    dep = 0
 
-    print(set(data_list))
-    for line in data_list:
-        if line[-3] == "Customer":
+    for line in type_list:
+        if line == "Customer":
             cost += 1
-        else:
+        elif line == "Subscriber":
             sub += 1
+        elif line == "Dependent":
+            dep += 1
 
-    print(cost)
-    print(sub)
+    #print(cost)
+    #print(sub)
+    #print(dep)
 
-    return [cost, sub]
+    return [cost, dep, sub]
 
-gender_list = column_to_list(data_list, -3)
-types = ["Costumer", "Subscriber"]
-quantity = count_type(data_list)
+
+
+type_list = column_to_list(data_list, -3)
+types = sorted(list(set(type_list)))
+#print(sorted(list(set(type_list))))
+quantity = count_type(type_list)
 y_pos = list(range(len(types)))
 plt.bar(y_pos, quantity)
 plt.ylabel('Quantidade')
@@ -270,14 +277,23 @@ input("Aperte Enter para continuar...")
 # TAREFA 9
 # TODO: Ache a duração de viagem Mínima, Máxima, Média, e Mediana.
 # Você não deve usar funções prontas parTODO isso, como max() e min().
-trip_duration_list = column_to_list(data_list, 2)
+trip_duration_list = list(map(int, column_to_list(data_list, 2)))
 
-#funcao MAP pesquisada na internet
-#https://stackoverflow.com/questions/3371269/call-int-function-on-every-list-element
-min_trip = min(map(int, trip_duration_list))
-max_trip = max(map(int, trip_duration_list))
-mean_trip = statistics.mean(map(int, trip_duration_list))
-median_trip = statistics.median(map(int, trip_duration_list))
+max_trip = 0
+min_trip = trip_duration_list[0]
+total_trip = 0
+
+for value in trip_duration_list:
+    if(value > max_trip):
+        max_trip = value
+    if(value < min_trip):
+        min_trip = value
+
+    total_trip += value
+
+median_trip = sorted(trip_duration_list)[len(trip_duration_list) // 2]
+mean_trip = total_trip / len(trip_duration_list)
+
 
 
 print("\nTAREFA 9: Imprimindo o mínimo, máximo, média, e mediana")
@@ -297,14 +313,14 @@ input("Aperte Enter para continuar...")
 # TAREFA 10
 # Gênero é fácil porque nós temos apenas algumas opções. E quanto a start_stations? Quantas opções ele tem?
 # TODO: Verifique quantos tipos de start_stations nós temos, usando set()
-user_types = set(column_to_list(data_list, 3))
+start_stations = set(column_to_list(data_list, 3))
 
 print("\nTAREFA 10: Imprimindo as start stations:")
-print(len(user_types))
-print(user_types)
+print(len(start_stations))
+print(list(start_stations))
 
 # ------------ NÃO MUDE NENHUM CÓDIGO AQUI ------------
-assert len(user_types) == 582, "TAREFA 10: Comprimento errado de start stations."
+assert len(start_stations) == 582, "TAREFA 10: Comprimento errado de start stations."
 # -----------------------------------------------------
 
 input("Aperte Enter para continuar...")
