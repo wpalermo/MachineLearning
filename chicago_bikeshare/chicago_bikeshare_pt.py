@@ -284,9 +284,9 @@ min_trip = trip_duration_list[0]
 total_trip = 0
 
 for value in trip_duration_list:
-    if(value > max_trip):
+    if value > max_trip:
         max_trip = value
-    if(value < min_trip):
+    if value < min_trip:
         min_trip = value
 
     total_trip += value
