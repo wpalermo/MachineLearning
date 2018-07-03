@@ -291,19 +291,18 @@ for value in trip_duration_list:
 
     total_trip += value
 
-
+mean_trip = total_trip / len(trip_duration_list)
 
 sorted_duration_list = sorted(trip_duration_list)
 
 if len(sorted_duration_list) % 2 == 1:
     median_trip = sorted_duration_list[len(trip_duration_list) // 2]
 else:
-    index1 = sorted_duration_list[(len(trip_duration_list) // 2)]
-    index2 = sorted_duration_list[(len(trip_duration_list) // 2) + 1]
-    mean_trip = (index1 + index2) // 2
+    median_value1 = sorted_duration_list[(len(trip_duration_list) // 2)]
+    median_value2 = sorted_duration_list[(len(trip_duration_list) // 2) + 1]
+    median_trip = (median_value1 + median_value2) // 2
 
-median_trip = sorted(trip_duration_list)[len(trip_duration_list) // 2]
-mean_trip = total_trip / len(trip_duration_list)
+
 
 
 
