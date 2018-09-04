@@ -11794,7 +11794,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sklearn</span>
@@ -11850,7 +11850,7 @@ Tudo certo!
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Importar as bibliotecas necessárias para este projeto</span>
@@ -11936,26 +11936,26 @@ Tudo certo!
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO: Preço mínimo dos dados</span>
 
-<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 <span class="c1">#print(np.maximum(prices[&#39;MEDV&#39;]))</span>
 
 
 <span class="c1"># TODO: Preço máximo dos dados</span>
-<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Preço médio dos dados</span>
-<span class="n">mean_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mean_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Preço mediano dos dados</span>
-<span class="n">median_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="n">median_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># TODO: Desvio padrão do preço dos dados</span>
-<span class="n">std_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">std_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># Mostrar as estatísticas calculadas</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Estatísticas para os dados dos imóveis de Boston:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -11986,7 +11986,7 @@ Preço mínimo: $105,000.00
 Preço máximo: $1,024,800.00
 Preço médio: $454,342.94
 Preço mediano: $438,900.00
-Desvio padrão dos preços: $165,340.28
+Desvio padrão dos preços: $165,171.13
 </pre>
 </div>
 </div>
@@ -12334,7 +12334,7 @@ height=521
 <p><strong>Resposta:</strong>
 max_depth = 3</p>
 <p>A curva vai manter o mesmo padrão, o parametro que está alterando a curva é a profundidade.</p>
-<p>Ter mais pontos beneficia, pois o treinamento vai ficar mais próximo da realidade, fazendo com que seja mais acertivo.</p>
+<p>Nem sempre, no caso da da profundidade 3, as curvas vao continuar paralelas independetemente da quantidade de pontos este max_depth já está no seu melhor resultado. É a melhor profunidade em analisando os gráficos em relação aos demais. Ja a profundidade 6 seria interessante colocarmos mais dados pois as curvas ja estão tendendo pro mesmo lugar e se adicionarmos mais dados elas chegariam a um resultado parecido com a de profundidade 3.</p>
 
 </div>
 </div>
@@ -12482,7 +12482,7 @@ profundidade maxima 3, pois as curvas de treino e validacao ficam bem proximas e
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Resposta:</strong> Validação cruzada é a técnica de se separar o conjunto de dados em varios subconjuntos para testar a eficacia do modelo aplicado, train_and_test é um tipo de validação cruzada por exemplo.</p>
-<p>A técnica k-fold consiste em dividir o conjunto de dados não em apenas dois (teste e treino) mas em um número "k" de subconjuntos, isso garante que o modelo fique ajustado para ser o mais genérico possível, sendo mais acertivo para diferentes conjuntos de dados.</p>
+<p>A técnica k-fold consiste em dividir o conjunto de dados não em apenas dois (teste e treino) mas em um número "k" de subconjuntos e a partir da média do resultado de todos os subconjuntos podemos verificar o quão bom o modelo está. É um boa técnica para se usar quando ser tem um conjunto pequeno de dados, onde usar o slit_and_train não seria muito bom pela falta de dados.</p>
 
 </div>
 </div>
@@ -12621,7 +12621,7 @@ profundidade maxima 3, pois as curvas de treino e validacao ficam bem proximas e
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Dica:</strong> A resposta vem da saída do código acima.</p>
-<p><strong>Resposta:</strong> max_depth entre 5 e 8</p>
+<p><strong>Resposta:</strong> max_depth entre 5 e 8, na questão 6 o melhor resultado é o 3 com aquela quantidade de pontos. Porém caso testassemos o modelo com mais pontos, o grafico com profundidade 6 poderia ficar tão bom ou melhor que com profundidade 3, por isso o fit_model varia entre 5 e 8 e além disso siginifica a partir do max_depth 8 teriamos que adicionar muito mais dados para conseguir aproximar as curvas de teste e treino.</p>
 
 </div>
 </div>
@@ -12715,7 +12715,8 @@ Preço estimado para a casa do cliente 3: $913,500.00
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Resposta:</strong></p>
-<p>Os preços abaixo são os estimados pelo modelo de predição estão de acordo com os parâmetros passados sendo a estimativa para o cliente2 a menor e para o cliente 3 a maior.</p>
+<p>Os preços abaixo são os estimados pelo modelo de predição estão de acordo com os parâmetros passados sendo a estimativa para o cliente2 a menor pois tem menos comodos e o nível de pobreza do bairro é alto, desvalorizando o imóvel, e para o cliente 3 a maior pois tem mais cômodos e é onde a taxa de pobreza é a menor valorizando bem o imóvel e o cliente1 é o mediano.</p>
+<p>Podemos concluir que o peso da razão de estudante/professor não é tão grande para a valorização dos imóveis como o numero de cômodos e nível de pobreza, pois o cliente2 apezar de ter a mais quantidade de professores por aluno essa característica nao ajuda ao seu imóvel ser mais valorizado como os 8 comodos do cliente 3.</p>
 <p>Mas podemos usar essas estimativas apenas como uma base, existem outras várias caracteristicas de um imóvel que podem alterar esses valores.</p>
 <ul>
 <li>Preço estimado para a casa do cliente 1: 275,100.00</li>
