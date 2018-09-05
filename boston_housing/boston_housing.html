@@ -12333,8 +12333,10 @@ height=521
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Resposta:</strong>
 max_depth = 3</p>
-<p>A curva vai manter o mesmo padrão, o parametro que está alterando a curva é a profundidade.</p>
-<p>Nem sempre, no caso da da profundidade 3, as curvas vao continuar paralelas independetemente da quantidade de pontos este max_depth já está no seu melhor resultado. É a melhor profunidade em analisando os gráficos em relação aos demais. Ja a profundidade 6 seria interessante colocarmos mais dados pois as curvas ja estão tendendo pro mesmo lugar e se adicionarmos mais dados elas chegariam a um resultado parecido com a de profundidade 3.</p>
+<p>Nem sempre, no caso da da profundidade 3, as curvas vao continuar paralelas independetemente da quantidade de pontos este max_depth já está no seu melhor resultado. É a melhor profunidade em analisando os gráficos em relação aos demais.</p>
+<p>A profundidade 1, é muito pouca está com viés muito alto, independente da quantidade de pontos, o score não vai melhorar.</p>
+<p>Ja a profundidade 6 seria interessante colocarmos mais dados pois as curvas ja estão tendendo pro mesmo lugar e se adicionarmos mais dados as curvas vão ficar tão proximas ou mais que as de profundidade 3 e com um score alto.</p>
+<p>No caso da profundidar 10, teriamios que adicionar uma grande quantidade de dados para alterar o comportamento das curvas.</p>
 
 </div>
 </div>
@@ -12481,8 +12483,10 @@ profundidade maxima 3, pois as curvas de treino e validacao ficam bem proximas e
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Resposta:</strong> Validação cruzada é a técnica de se separar o conjunto de dados em varios subconjuntos para testar a eficacia do modelo aplicado, train_and_test é um tipo de validação cruzada por exemplo.</p>
-<p>A técnica k-fold consiste em dividir o conjunto de dados não em apenas dois (teste e treino) mas em um número "k" de subconjuntos e a partir da média do resultado de todos os subconjuntos podemos verificar o quão bom o modelo está. É um boa técnica para se usar quando ser tem um conjunto pequeno de dados, onde usar o slit_and_train não seria muito bom pela falta de dados.</p>
+<p><strong>Resposta:</strong> Validação cruzada é a técnica de se separar o conjunto de dados em k subconjuntos para testar a eficacia do modelo aplicado, train_and_test é um tipo de validação cruzada por exemplo.</p>
+<p>A técnica k-fold consiste em dividir o conjunto de dados não em apenas dois (teste e treino) mas em um número "k" onde k é a quantidade de subconjuntos 
+O k-fold em si não faz a validação mas faz a separação em varios sub-grupos, e usado em conjunto com a busca em matriz conseguimos chegar a uma media de pontução de todos esses grupo e a partir da média do resultado de todos os subconjuntos podemos verificar o quão bom o modelo está.</p>
+<p>É um boa técnica para se usar quando ser tem um conjunto pequeno de dados, onde usar o split_and_train não seria muito bom pela falta de dados.</p>
 
 </div>
 </div>
@@ -12621,7 +12625,7 @@ profundidade maxima 3, pois as curvas de treino e validacao ficam bem proximas e
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Dica:</strong> A resposta vem da saída do código acima.</p>
-<p><strong>Resposta:</strong> max_depth entre 5 e 8, na questão 6 o melhor resultado é o 3 com aquela quantidade de pontos. Porém caso testassemos o modelo com mais pontos, o grafico com profundidade 6 poderia ficar tão bom ou melhor que com profundidade 3, por isso o fit_model varia entre 5 e 8 e além disso siginifica a partir do max_depth 8 teriamos que adicionar muito mais dados para conseguir aproximar as curvas de teste e treino.</p>
+<p><strong>Resposta:</strong> max_depth entre 5 e 8, comparando com a questão 6 onde o melhor resultado é o 3, com aquela quantidade de pontos é o melhor caso porém caso testassemos o modelo com mais pontos, o grafico com profundidade 6 poderia ficar tão bom ou melhor que com profundidade 3, por isso o fit_model varia entre 5 e 8 e além disso siginifica a partir do max_depth 8 teriamos que adicionar muito mais dados para conseguir aproximar as curvas de teste e treino então a partir dessa profundidade o modelo não consegue atingir uma pontuação boa.</p>
 
 </div>
 </div>
@@ -12717,12 +12721,6 @@ Preço estimado para a casa do cliente 3: $913,500.00
 <p><strong>Resposta:</strong></p>
 <p>Os preços abaixo são os estimados pelo modelo de predição estão de acordo com os parâmetros passados sendo a estimativa para o cliente2 a menor pois tem menos comodos e o nível de pobreza do bairro é alto, desvalorizando o imóvel, e para o cliente 3 a maior pois tem mais cômodos e é onde a taxa de pobreza é a menor valorizando bem o imóvel e o cliente1 é o mediano.</p>
 <p>Podemos concluir que o peso da razão de estudante/professor não é tão grande para a valorização dos imóveis como o numero de cômodos e nível de pobreza, pois o cliente2 apezar de ter a mais quantidade de professores por aluno essa característica nao ajuda ao seu imóvel ser mais valorizado como os 8 comodos do cliente 3.</p>
-<p>Mas podemos usar essas estimativas apenas como uma base, existem outras várias caracteristicas de um imóvel que podem alterar esses valores.</p>
-<ul>
-<li>Preço estimado para a casa do cliente 1: 275,100.00</li>
-<li>Preço estimado para a casa do cliente 2: 184,800.00</li>
-<li>Preço estimado para a casa do cliente 3: 913,500.00</li>
-</ul>
 
 </div>
 </div>
